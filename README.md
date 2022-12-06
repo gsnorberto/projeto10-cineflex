@@ -4,7 +4,7 @@
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-#Descrição do Projeto
+# Descrição do Projeto
 O projeto Cineflex tem como finalidade simular uma reserva de poltrona no cinema. A base de dados vem da API fornecida pela equipe da Driven.
 
 > :construction: Projeto em construção :construction:
@@ -12,8 +12,8 @@ O projeto Cineflex tem como finalidade simular uma reserva de poltrona no cinema
 # 📁 Acesso ao projeto
 **Em breve**
 
-#Tecnologias Utilizadas
+# Tecnologias Utilizadas
 React, Styled-Components
 
-#Desenvolvedores:
+# Desenvolvedores:
 | [<img src="https://github.com/gsnorberto.png" width=115><br><sub>Gabriel Silva Norberto</sub>](https://github.com/gsnorberto) 
