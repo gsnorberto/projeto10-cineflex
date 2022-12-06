@@ -1,5 +1,7 @@
+import { HeaderArea } from "./styles"
+
 export default () => {
     return(
-        <div>Header</div>
+        <HeaderArea>CINEFLEX</HeaderArea>
     )
 }
