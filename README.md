@@ -1,4 +1,4 @@
-<h1 align="center"> PROJETO CINEFLEX </h1>
+# PROJETO CINEFLEX
 
 ![Logo do Cineflex](https://user-images.githubusercontent.com/45599563/205776829-d3f5d0ff-4eae-4516-b4ef-fc2856de1720.png)
 
