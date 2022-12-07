@@ -5,7 +5,7 @@ export default ({ id, title, imgURL}) => {
     const navigate = useNavigate();
 
     function handleNextPage () {
-        navigate(`/assentos/${id}`)
+        navigate(`/sessoes/${id}`)
     }
 
     return(

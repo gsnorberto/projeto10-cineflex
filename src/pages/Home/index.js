@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import Movie from "../../components/Movie";
-import { MoviesArea } from "./styles"
+import { MoviesArea, Title } from "./styles"
 
 export default () => {
     const [listMovies, setListMovies] = useState([]);
@@ -36,6 +36,9 @@ export default () => {
                             imgURL={movie.posterURL}
                         />
                     ))
+                }
+                {listMovies.length === 0 &&
+                    <div>Carregando...</div>
                 }
             </MoviesArea>
 

@@ -9,3 +9,4 @@ export const MoviesArea = styled.div`
     justify-content: center;
     flex-wrap: wrap;
 `
+
