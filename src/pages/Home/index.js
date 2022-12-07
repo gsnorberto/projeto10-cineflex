@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import Movie from "../../components/Movie";
+import { MoviesArea } from "./styles"
 
 export default () => {
     const [listMovies, setListMovies] = useState([]);
@@ -9,6 +11,7 @@ export default () => {
     const getMovies = () => {
         axios.get(`${URL}/movies`)
             .then(response => {
+                console.log(response.data);
                 setListMovies(response.data);
             })
             .catch(err => {
@@ -22,10 +25,19 @@ export default () => {
 
 
     return (
-        <>
-            {listMovies.length > 0 &&
-                listMovies.map(movie => <div>{movie.title}</div> )
-            }
-        </>
+  
+            <MoviesArea>
+                {listMovies.length > 0 &&
+                    listMovies.map(movie => (
+                        <Movie
+                            key={movie.id}
+                            id={movie.id}
+                            title={movie.title}
+                            imgURL={movie.posterURL}
+                        />
+                    ))
+                }
+            </MoviesArea>
+
     )
 }
