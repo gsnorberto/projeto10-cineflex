@@ -20,7 +20,6 @@ export default ({st, setClickedSeats, clickedSeats}) => {
             color={!st.isAvailable ? '#FBE192' : seatBGColor}
             onClick={() => handleSelectSeat(st.id)}
             disabled={!st.isAvailable}
-            key={st.id}
         >
             {st.name}
         </SeatArea>
