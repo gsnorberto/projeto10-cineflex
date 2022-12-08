@@ -22,19 +22,6 @@ export const Seats = styled.div`
     flex-wrap: wrap;
 `
 
-export const St = styled.div`
-    width: 26px;
-    height: 26px;
-    background-color: #C3CFD9;
-    font-size: 11px;
-    border-radius: 50%;
-    border: 1px solid #808F9D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-`
-
 export const Status = styled.div`
     display: flex;
     justify-content: center;
@@ -137,7 +124,9 @@ export const Footer = styled.div`
    }
 
    .title{
-    font-size: 26px;
+    font-size: 20px;
     color: #293845;
+    display: flex;
+    flex-direction: column;
    }
 `
