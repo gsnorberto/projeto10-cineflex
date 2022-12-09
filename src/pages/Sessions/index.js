@@ -14,7 +14,6 @@ export default () => {
     const getMovie = () => {
         axios.get(`${URL}/movies/${idFilme}/showtimes`)
             .then(response => {
-                console.log(response.data);
                 setMovieInfos(response.data);
             })
             .catch(err => {

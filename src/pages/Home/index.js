@@ -11,7 +11,6 @@ export default () => {
     const getMovies = () => {
         axios.get(`${URL}/movies`)
             .then(response => {
-                console.log(response.data);
                 setListMovies(response.data);
             })
             .catch(err => {

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 
 export default ({ dayInfos }) => {
     let navigate = useNavigate();
-    console.log("aqui ", dayInfos.showtimes[0].id);
 
     function handleNextPage (id) {
         navigate(`/assentos/${id}`);

@@ -42,3 +42,21 @@ export const Desc = styled.div`
     margin-top: 5px;
 `
 
+export const Button = styled.button`
+    border: 0;
+    background-color: #E8833A;
+    padding: 15px 30px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover{
+        opacity: 0.8;
+    }
+`
+export const ButtonArea = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+`

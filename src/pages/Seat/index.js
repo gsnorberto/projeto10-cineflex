@@ -5,19 +5,15 @@ import { Button, ButtonArea, Inputs, SeatArea, Seats, Status, Title, Label, Inpu
 import SeatCP from "../../components/SeatCP";
 
 
-export default () => {
+export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF}) => {
     let navigate = useNavigate();
-    const [allSeats, setAllSeats] = useState({});
-    const [clickedSeats, setClickedSeats] = useState([]);
-    const [buyerName, setBuyerName] = useState('');
-    const [buyerCPF, setbuyerCPF] = useState('');
     let { idSessao } = useParams();
 
     useEffect(() => {
         getSeats();
     }, []);
 
-
+    // Obter lista de assentos da sessão
     let URL = 'https://mock-api.driven.com.br/api/v8/cineflex';
     const getSeats = () => {
         axios.get(`${URL}/showtimes/${idSessao}/seats`)
@@ -25,10 +21,11 @@ export default () => {
                 setAllSeats(response.data);
             })
             .catch(err => {
-                alert('Error', err.message); 
+                alert('Error 2', err.message); 
             })
     }
 
+    // Reservar assento
     const handleBookSeat = () => {
         if(buyerName === ''){
             alert('Digite um nome válido!');
@@ -37,19 +34,17 @@ export default () => {
         } else if(clickedSeats.length === 0){
             alert('Selecione um assento')
         } else {
+            let ids = clickedSeats.map(c => c.id);
             axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, {
-                ids: clickedSeats,
+                ids: ids,
 	            name: buyerName,
 	            cpf: buyerCPF
-            }).then(response => {
-                console.log(response);
+            }).then(response => { // Reserva realizada com sucesso
                 navigate('/sucesso')
-            }).catch(err => {
-                alert('Error', err.message);
+            }).catch(err => { // Erro ao reservar
+                alert('Error 1:', err.message);
             })
         }
-
-
     }
 
     return (
@@ -117,6 +112,9 @@ export default () => {
                         </div>
                     </Footer>
                 </>
+            }
+            {!allSeats.id &&
+                <div>Carregando...</div>
             }
         </SeatArea>
     )
