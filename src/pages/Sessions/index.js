@@ -1,8 +1,9 @@
-import { SessionsArea, Title, Footer } from "./styles";
+import { SessionsArea, Title, Footer, LoadinButton } from "./styles";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import SessionDate from "../../components/SessionDate";
+import loadingIcon from "../../assets/icons/load.svg";
 
 export default () => {
     const [movieInfos, setMovieInfos] = useState({});
@@ -41,7 +42,7 @@ export default () => {
                 </>
             }
             {!movieInfos.id &&
-                <div>Carregando...</div>
+                <LoadinButton src={loadingIcon}  />
             }
         </SessionsArea>
     )

@@ -10,3 +10,9 @@ export const MoviesArea = styled.div`
     flex-wrap: wrap;
 `
 
+export const LoadinButton = styled.img`
+    position: fixed;
+    width: 100px;
+    top: calc(50% - (100px/2));
+    left: calc(50% - (100px/2));
+`

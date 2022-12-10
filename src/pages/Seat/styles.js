@@ -130,3 +130,10 @@ export const Footer = styled.div`
     flex-direction: column;
    }
 `
+
+export const LoadingButton = styled.img`
+    position: fixed;
+    width: 100px;
+    top: calc(50% - (100px/2));
+    left: calc(50% - (100px/2));
+`

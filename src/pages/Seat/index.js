@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
-import { Button, ButtonArea, Inputs, SeatArea, Seats, Status, Title, Label, Input, Footer } from "./styles"
+import { Button, ButtonArea, Inputs, SeatArea, Seats, Status, Title, Label, Input, Footer, LoadingButton } from "./styles"
 import SeatCP from "../../components/SeatCP";
-
+import loadingIcon from "../../assets/icons/load.svg";
 
 export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF}) => {
     let navigate = useNavigate();
@@ -114,7 +114,7 @@ export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName
                 </>
             }
             {!allSeats.id &&
-                <div>Carregando...</div>
+                <LoadingButton src={loadingIcon}  />
             }
         </SeatArea>
     )

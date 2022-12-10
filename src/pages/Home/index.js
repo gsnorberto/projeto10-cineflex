@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import Movie from "../../components/Movie";
-import { MoviesArea, Title } from "./styles"
+import { MoviesArea, LoadinButton } from "./styles"
+import loadingIcon from "../../assets/icons/load.svg";
 
 export default () => {
     const [listMovies, setListMovies] = useState([]);
@@ -37,7 +38,7 @@ export default () => {
                     ))
                 }
                 {listMovies.length === 0 &&
-                    <div>Carregando...</div>
+                    <LoadinButton src={loadingIcon}  />
                 }
             </MoviesArea>
 
