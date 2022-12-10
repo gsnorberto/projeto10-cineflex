@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import Sessions from "./pages/Sessions"
 import Seat from "./pages/Seat"
@@ -10,6 +10,10 @@ export const Router = () => {
     const [clickedSeats, setClickedSeats] = useState([]);
     const [buyerName, setBuyerName] = useState('');
     const [buyerCPF, setbuyerCPF] = useState('');
+
+    useEffect(() => {
+        console.log(clickedSeats)
+    }, [clickedSeats]);
 
     return (
         <BrowserRouter>

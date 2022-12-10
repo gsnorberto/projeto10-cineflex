@@ -5,10 +5,12 @@ export default ({st, setClickedSeats, clickedSeats}) => {
     const [seatBGColor, setSeatBGColor] = useState('#C3CFD9');
 
     function handleSelectSeat () {
+        let ids = clickedSeats.map(c => c.id);
+
         if(!st.isAvailable){ // Assento não disponível
             alert('Esse assento não está disponível')
         }
-        else if(clickedSeats.includes(st.id)){ // Retirar seleção do assento
+        else if(ids.includes(st.id)){ // Retirar seleção do assento
             let newArray = clickedSeats.filter(e => e.id !== st.id)
             setClickedSeats(newArray)
             setSeatBGColor('#C3CFD9')
