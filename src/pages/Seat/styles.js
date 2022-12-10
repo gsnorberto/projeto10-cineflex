@@ -59,14 +59,14 @@ export const Status = styled.div`
     }
 `
 
-export const Inputs = styled.div`
+export const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
     
 `
-export const Label = styled.div`
+export const Label = styled.label`
     display: flex;
     flex-direction: column;
     font-size: 18px;

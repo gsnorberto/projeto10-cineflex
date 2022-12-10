@@ -21,7 +21,7 @@ export default ({st, setClickedSeats, clickedSeats}) => {
     }
 
     return(
-        <SeatArea
+        <SeatArea data-test="seat"
             color={!st.isAvailable ? '#FBE192' : seatBGColor}
             onClick={() => handleSelectSeat()}
         >

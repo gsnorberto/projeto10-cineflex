@@ -9,8 +9,8 @@ export default ({ id, title, imgURL}) => {
     }
 
     return(
-        <MovieArea>
-            <img onClick={handleNextPage} src={imgURL} alt={title} />
+        <MovieArea data-test="movie" onClick={handleNextPage}>
+            <img src={imgURL} alt={title} />
         </MovieArea>
     )
 }

@@ -17,7 +17,7 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
         <SuccessArea>
             <Title>Pedido feito com sucesso!</Title>
 
-            <Movie>
+            <Movie data-test="movie-info">
                 <Title2>Filme e Sessão</Title2>
                 {allSeats.id &&
                     <>
@@ -26,17 +26,17 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
                     </>
                 }
             </Movie>
-            <Tickets>
+            <Tickets data-test="seats-info">
                 <Title2>Ingressos</Title2>
                 {clickedSeats.length > 0 ? clickedSeats.map(cli => <Desc key={cli.id}>Assento {cli.name}</Desc>) : ''}
             </Tickets>
-            <Buyer>
+            <Buyer data-test="client-info">
                 <Title2>Comprador</Title2>
                 <Desc>Nome: {buyerName}</Desc>
                 <Desc>CPF: {buyerCPF}</Desc>
             </Buyer>
             <ButtonArea>
-                <Button onClick={backToHomePage}>Voltar para Home</Button>
+                <Button data-test="go-home-btn" onClick={backToHomePage}>Voltar para Home</Button>
             </ButtonArea>
         </SuccessArea>
     )

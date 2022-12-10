@@ -14,7 +14,7 @@ export default () => {
         <HeaderArea>
             <div>CINEFLEX</div>
             {location.pathname !== '/' && location.pathname !== '/sucesso' &&
-                <Button onClick={goBack} src={arrowBack} />
+                <Button data-test="go-home-header-btn" onClick={goBack} src={arrowBack} />
             }
         </HeaderArea>
     )

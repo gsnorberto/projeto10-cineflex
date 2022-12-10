@@ -35,7 +35,7 @@ export default () => {
 
                     {movieInfos.days.map(day => <SessionDate key={day.id} dayInfos={day} />)}
                     
-                    <Footer>
+                    <Footer data-test="footer">
                         <img src={movieInfos.posterURL} alt={movieInfos.title} />
                         <div className="title">{movieInfos.title}</div>
                     </Footer>

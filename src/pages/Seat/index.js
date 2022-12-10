@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { Button, ButtonArea, Inputs, SeatArea, Seats, Status, Title, Label, Input, Footer, LoadingButton } from "./styles"
+import { Button, ButtonArea, Form, SeatArea, Seats, Status, Title, Label, Input, Footer, LoadingButton } from "./styles"
 import SeatCP from "../../components/SeatCP";
 import loadingIcon from "../../assets/icons/load.svg";
 
-export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF}) => {
+export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF }) => {
     let navigate = useNavigate();
     let { idSessao } = useParams();
 
@@ -21,24 +21,26 @@ export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName
                 setAllSeats(response.data);
             })
             .catch(err => {
-                alert('Error 2', err.message); 
+                alert('Error 2', err.message);
             })
     }
 
     // Reservar assento
-    const handleBookSeat = () => {
-        if(buyerName === ''){
+    const handleBookSeat = (e) => {
+        e.preventDefault();
+
+        if (buyerName === '') {
             alert('Digite um nome válido!');
-        } else if(buyerCPF.length !== 11){
+        } else if (buyerCPF.length !== 11) {
             alert('Digite um cpf válido!');
-        } else if(clickedSeats.length === 0){
+        } else if (clickedSeats.length === 0) {
             alert('Selecione um assento')
         } else {
             let ids = clickedSeats.map(c => c.id);
             axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, {
                 ids: ids,
-	            name: buyerName,
-	            cpf: buyerCPF
+                name: buyerName,
+                cpf: buyerCPF
             }).then(response => { // Reserva realizada com sucesso
                 navigate('/sucesso')
             }).catch(err => { // Erro ao reservar
@@ -79,31 +81,31 @@ export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName
                         </div>
                     </Status>
 
-                    <Inputs>
-                        <Label>
-                            Nome do comprador:
-                            <Input
+                    <Form onSubmit={handleBookSeat}>
+                        <Label htmlFor="">
+                            Nome do Comprador
+                            <Input data-test="client-name"
                                 placeholder="Digite seu nome..."
                                 value={buyerName}
+                                type="text"
                                 onChange={(e) => setBuyerName(e.target.value)}
                             />
                         </Label>
-
-                        <Label>
+                        <Label htmlFor="">
                             CPF do comprador:
-                            <Input
+                            <Input data-test="client-cpf"
                                 value={buyerCPF}
+                                type="number"
                                 onChange={(e) => setbuyerCPF(e.target.value)}
                                 placeholder="Digite seu CPF..."
                             />
                         </Label>
-                    </Inputs>
+                        <ButtonArea>
+                            <Button data-test="book-seat-btn" type="submit">Reservar Assento</Button>
+                        </ButtonArea>
+                    </Form>
 
-                    <ButtonArea>
-                        <Button onClick={handleBookSeat}>Reservar Assento</Button>
-                    </ButtonArea>
-
-                    <Footer>
+                    <Footer data-test="footer">
                         <img src={allSeats.movie.posterURL} alt="" />
 
                         <div className="title">
@@ -114,7 +116,7 @@ export default ({allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName
                 </>
             }
             {!allSeats.id &&
-                <LoadingButton src={loadingIcon}  />
+                <LoadingButton src={loadingIcon} />
             }
         </SeatArea>
     )

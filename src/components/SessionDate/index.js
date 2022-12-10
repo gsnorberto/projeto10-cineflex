@@ -11,10 +11,10 @@ export default ({ dayInfos }) => {
     }
 
     return(
-        <SessionArea>
+        <SessionArea data-test="movie-day">
             <SessionDate>{dayInfos.weekday} - {dayInfos.date}</SessionDate>
             <SessionTimes>
-                {dayInfos.showtimes.map(time => <SessionTime onClick={() => handleNextPage(time.id)} key={time.id}>{time.name}</SessionTime>)}
+                {dayInfos.showtimes.map(time => <SessionTime data-test="showtime" onClick={() => handleNextPage(time.id)} key={time.id}>{time.name}</SessionTime>)}
             </SessionTimes>
         </SessionArea> 
     )
