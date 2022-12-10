@@ -14,7 +14,7 @@ export default () => {
                 setListMovies(response.data);
             })
             .catch(err => {
-                console.log(err);
+                alert(err);
             })
     }
 

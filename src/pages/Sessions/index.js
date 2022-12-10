@@ -17,7 +17,7 @@ export default () => {
                 setMovieInfos(response.data);
             })
             .catch(err => {
-                console.log(err);
+                alert(err);
             })
     }
 

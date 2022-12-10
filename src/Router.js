@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Sessions from "./pages/Sessions"
 import Seat from "./pages/Seat"
 import Success from "./pages/Success"
+import Header from './components/Header';
 
 export const Router = () => {
     const [allSeats, setAllSeats] = useState({});
@@ -11,12 +12,9 @@ export const Router = () => {
     const [buyerName, setBuyerName] = useState('');
     const [buyerCPF, setbuyerCPF] = useState('');
 
-    useEffect(() => {
-        console.log(clickedSeats)
-    }, [clickedSeats]);
-
     return (
         <BrowserRouter>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/sessoes/:idFilme" element={<Sessions />} />

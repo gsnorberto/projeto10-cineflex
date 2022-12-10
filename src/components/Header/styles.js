@@ -14,3 +14,11 @@ export const HeaderArea = styled.div`
     top: 0;
     left: 0;
 `
+
+export const Button = styled.img`
+    position: fixed;
+    left: 15px;
+    width: 30px;
+    color: #E8833A;
+    cursor: pointer;
+`
