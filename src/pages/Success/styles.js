@@ -28,9 +28,10 @@ export const Tickets = styled.div`
 export const Buyer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     
     .buyer{
-        margin-top: 20px;
+        margin-bottom: 10px;
     }
 `
 

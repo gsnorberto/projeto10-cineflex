@@ -2,11 +2,13 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { HeaderArea, Button } from "./styles"
 import arrowBack from "../../assets/icons/arrow-back-outline.svg";
 
-export default () => {
+export default ({setClickedSeats, setBuyersData}) => {
     let location = useLocation();
     let navigate = useNavigate();
 
     function goBack(){
+        setClickedSeats([]);
+        setBuyersData([]);
         navigate(-1);
     }
 

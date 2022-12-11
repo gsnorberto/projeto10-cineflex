@@ -30,9 +30,9 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersDa
                 {clickedSeats.length > 0 ? clickedSeats.map(cli => <Desc key={cli.id}>Assento {cli.name}</Desc>) : ''}
             </Tickets>
             <Buyer data-test="client-info">
+                <Title2>Comprador</Title2>
                 {buyersData.map((buyer, ind) => (
                     <div className="buyer" key={ind}>
-                        <Title2>Comprador {ind+1}:</Title2>
                         <Desc>Nome: {buyer.nome}</Desc>
                         <Desc>CPF: {buyer.cpf}</Desc>
                     </div>

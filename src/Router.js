@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Home from "./pages/Home";
 import Sessions from "./pages/Sessions"
 import Seat from "./pages/Seat"
@@ -13,7 +13,7 @@ export const Router = () => {
 
     return (
         <BrowserRouter>
-            <Header />
+            <Header setBuyersData={setBuyersData} setClickedSeats={setClickedSeats} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/sessoes/:idFilme" element={<Sessions />} />
