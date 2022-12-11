@@ -130,7 +130,7 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersDa
 
                                 <div className="title">Assento {cSeat.name}</div>
                                 <Label htmlFor="">
-                                    Nome do Comprador
+                                    Nome do comprador:
                                     <Input data-test="client-name"
                                         placeholder="Digite seu nome..."
                                         value={buyersData[getUserIndex(cSeat.id)].nome}
@@ -150,7 +150,7 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersDa
                             </div>
                         ))}
                         <ButtonArea>
-                            <Button data-test="book-seat-btn" type="submit">Reservar Assento</Button>
+                            <Button data-test="book-seat-btn" type="submit">Reservar assento(s)</Button>
                         </ButtonArea>
                     </Form>
 

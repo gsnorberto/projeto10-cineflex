@@ -12,12 +12,17 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersDa
         navigate('/')
     }
 
+    function cpfFormat (cpf) {
+        cpf = cpf.replace(/[^\d]/g, "");
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }
+
     return (
         <SuccessArea>
             <Title>Pedido feito com sucesso!</Title>
 
             <Movie data-test="movie-info">
-                <Title2>Filme e Sessão</Title2>
+                <Title2>Filme e sessão</Title2>
                 {allSeats.id &&
                     <>
                         <Desc>{allSeats.movie.title}</Desc>
@@ -34,7 +39,7 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersDa
                 {buyersData.map((buyer, ind) => (
                     <div className="buyer" key={ind}>
                         <Desc>Nome: {buyer.nome}</Desc>
-                        <Desc>CPF: {buyer.cpf}</Desc>
+                        <Desc>CPF: {cpfFormat(buyer.cpf)}</Desc>
                     </div>
                 ))}
 
