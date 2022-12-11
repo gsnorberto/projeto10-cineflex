@@ -5,7 +5,7 @@ import { Button, ButtonArea, Form, SeatArea, Seats, Status, Title, Label, Input,
 import SeatCP from "../../components/SeatCP";
 import loadingIcon from "../../assets/icons/load.svg";
 
-export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF }) => {
+export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersData, setBuyersData }) => {
     let navigate = useNavigate();
     let { idSessao } = useParams();
 
@@ -27,27 +27,66 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
 
     // Reservar assento
     const handleBookSeat = (e) => {
+        let isAllCorrect = true;
         e.preventDefault();
 
-        if (buyerName === '') {
-            alert('Digite um nome válido!');
-        } else if (buyerCPF.length !== 11) {
-            alert('Digite um cpf válido!');
-        } else if (clickedSeats.length === 0) {
-            alert('Selecione um assento')
-        } else {
+        for (let i = 0; i < buyersData.length; i++) {
+            if (buyersData[i].nome === '') {
+                alert('Há campo(s) vazio(s)');
+                isAllCorrect = false;
+                return;
+            } else if (buyersData[i].cpf.length !== 11) {
+                alert('Há campo(s) com cpf inválido');
+                isAllCorrect = false;
+                return;
+            } else if (clickedSeats.length === 0) {
+                alert('Selecione um assento');
+                isAllCorrect = false;
+                return;
+            }
+        }
+
+        if(isAllCorrect && clickedSeats.length !== 0){
             let ids = clickedSeats.map(c => c.id);
             axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, {
-                ids: ids,
-                name: buyerName,
-                cpf: buyerCPF
+                ids,
+                compradores: buyersData
             }).then(response => { // Reserva realizada com sucesso
                 navigate('/sucesso')
             }).catch(err => { // Erro ao reservar
                 alert('Error 1:', err.message);
             })
+        } else {
+            alert('Selecione um assento');
         }
     }
+
+    // Retorna a posição de usuário específico
+    function getUserIndex(id_assento) {
+        const index = buyersData.findIndex(buyer => buyer.idAssento === id_assento)
+        return index
+    }
+    // Atualizar nome do usuário - Input
+    function updateUserName(e, id_assento) {
+        const newUserData = buyersData.map(buyer => {
+            if (buyer.idAssento === id_assento) {
+                return { ...buyer, nome: e.target.value }
+            }
+            return buyer
+        })
+        setBuyersData(newUserData);
+    }
+    // Atualizar CPF do usuário - Input
+    function updateUserCpf(e, id_assento) {
+        const newUserData = buyersData.map(buyer => {
+            if (buyer.idAssento === id_assento) {
+                return { ...buyer, cpf: e.target.value }
+            }
+            return buyer
+        })
+        setBuyersData(newUserData);
+    }
+
 
     return (
         <SeatArea>
@@ -62,6 +101,8 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
                                 key={st.id}
                                 setClickedSeats={setClickedSeats}
                                 clickedSeats={clickedSeats}
+                                buyersData={buyersData}
+                                setBuyersData={setBuyersData}
                             />
                         ))}
                     </Seats>
@@ -81,25 +122,33 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
                         </div>
                     </Status>
 
+
+
                     <Form onSubmit={handleBookSeat}>
-                        <Label htmlFor="">
-                            Nome do Comprador
-                            <Input data-test="client-name"
-                                placeholder="Digite seu nome..."
-                                value={buyerName}
-                                type="text"
-                                onChange={(e) => setBuyerName(e.target.value)}
-                            />
-                        </Label>
-                        <Label htmlFor="">
-                            CPF do comprador:
-                            <Input data-test="client-cpf"
-                                value={buyerCPF}
-                                type="number"
-                                onChange={(e) => setbuyerCPF(e.target.value)}
-                                placeholder="Digite seu CPF..."
-                            />
-                        </Label>
+                        {clickedSeats.map(cSeat => (
+                            <div key={cSeat.id}>
+
+                                <div className="title">Assento {cSeat.name}</div>
+                                <Label htmlFor="">
+                                    Nome do Comprador
+                                    <Input data-test="client-name"
+                                        placeholder="Digite seu nome..."
+                                        value={buyersData[getUserIndex(cSeat.id)].nome}
+                                        type="text"
+                                        onChange={(e) => updateUserName(e, cSeat.id)}
+                                    />
+                                </Label>
+                                <Label htmlFor="">
+                                    CPF do comprador:
+                                    <Input data-test="client-cpf"
+                                        value={buyersData[getUserIndex(cSeat.id)].cpf}
+                                        type="number"
+                                        onChange={(e) => updateUserCpf(e, cSeat.id)}
+                                        placeholder="Digite seu CPF..."
+                                    />
+                                </Label>
+                            </div>
+                        ))}
                         <ButtonArea>
                             <Button data-test="book-seat-btn" type="submit">Reservar Assento</Button>
                         </ButtonArea>

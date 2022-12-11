@@ -9,8 +9,7 @@ import Header from './components/Header';
 export const Router = () => {
     const [allSeats, setAllSeats] = useState({});
     const [clickedSeats, setClickedSeats] = useState([]);
-    const [buyerName, setBuyerName] = useState('');
-    const [buyerCPF, setbuyerCPF] = useState('');
+    const [buyersData, setBuyersData] = useState([]);
 
     return (
         <BrowserRouter>
@@ -20,11 +19,11 @@ export const Router = () => {
                 <Route path="/sessoes/:idFilme" element={<Sessions />} />
                 <Route
                     path="/assentos/:idSessao"
-                    element={<Seat allSeats={allSeats} setAllSeats={setAllSeats} clickedSeats={clickedSeats} setClickedSeats={setClickedSeats} buyerName={buyerName} setBuyerName={setBuyerName} buyerCPF={buyerCPF} setbuyerCPF={setbuyerCPF} />}
+                    element={<Seat allSeats={allSeats} setAllSeats={setAllSeats} clickedSeats={clickedSeats} setClickedSeats={setClickedSeats} buyersData={buyersData} setBuyersData={setBuyersData}/>}
                 />
                 <Route
                     path="/sucesso"
-                    element={<Success allSeats={allSeats} setAllSeats={setAllSeats} clickedSeats={clickedSeats} setClickedSeats={setClickedSeats} buyerName={buyerName} setBuyerName={setBuyerName} buyerCPF={buyerCPF} setbuyerCPF={setbuyerCPF}/>}
+                    element={<Success allSeats={allSeats} setAllSeats={setAllSeats} clickedSeats={clickedSeats} setClickedSeats={setClickedSeats} buyersData={buyersData} setBuyersData={setBuyersData}/>}
                 />
             </Routes>
         </BrowserRouter>

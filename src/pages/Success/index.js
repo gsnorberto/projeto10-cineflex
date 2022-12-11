@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom"
 import { SuccessArea, Title, Title2, Desc, Movie, Tickets, Buyer, ButtonArea, Button } from "./styles"
 
-export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerName, setBuyerName, buyerCPF, setbuyerCPF }) => {
+export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyersData, setBuyersData }) => {
     let navigate = useNavigate()
 
-    function backToHomePage(){
+    function backToHomePage() {
         setAllSeats({})
         setClickedSeats([])
-        setBuyerName('')
-        setbuyerCPF('')
+        setBuyersData([]);
 
         navigate('/')
     }
@@ -31,9 +30,14 @@ export default ({ allSeats, setAllSeats, clickedSeats, setClickedSeats, buyerNam
                 {clickedSeats.length > 0 ? clickedSeats.map(cli => <Desc key={cli.id}>Assento {cli.name}</Desc>) : ''}
             </Tickets>
             <Buyer data-test="client-info">
-                <Title2>Comprador</Title2>
-                <Desc>Nome: {buyerName}</Desc>
-                <Desc>CPF: {buyerCPF}</Desc>
+                {buyersData.map((buyer, ind) => (
+                    <div className="buyer" key={ind}>
+                        <Title2>Comprador {ind+1}:</Title2>
+                        <Desc>Nome: {buyer.nome}</Desc>
+                        <Desc>CPF: {buyer.cpf}</Desc>
+                    </div>
+                ))}
+
             </Buyer>
             <ButtonArea>
                 <Button data-test="go-home-btn" onClick={backToHomePage}>Voltar para Home</Button>

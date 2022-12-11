@@ -65,6 +65,16 @@ export const Form = styled.form`
     align-items: center;
     margin-top: 50px;
     
+    .title{
+        margin-bottom: 15px;
+        margin-top: 20px;
+        color: #FFFFFF;
+        background-color: #C3CFD9;
+        text-align: center;
+        border-radius: 3px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 `
 export const Label = styled.label`
     display: flex;
@@ -84,6 +94,18 @@ export const Input = styled.input`
     font-size: 18px;
     font-style: italic;
     color: #293845;
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+        -moz-appearance: textfield;
+    }
 `
 
 export const Button = styled.button`

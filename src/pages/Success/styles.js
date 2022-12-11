@@ -22,12 +22,16 @@ export const Movie = styled.div`
 export const Tickets = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `
 
 export const Buyer = styled.div`
     display: flex;
     flex-direction: column;
+    
+    .buyer{
+        margin-top: 20px;
+    }
 `
 
 export const Title2 = styled.div`
