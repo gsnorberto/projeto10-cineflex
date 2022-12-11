@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const SeatArea = styled.button`
     width: 26px;
     height: 26px;
-    background-color: ${props => props.color};
+    background-color: ${props => props.bgColor};
     font-size: 11px;
     border-radius: 50%;
-    border: 1px solid #808F9D;
+    border: 1px solid ${props => props.borderColor};
     display: flex;
     justify-content: center;
     align-items: center;
