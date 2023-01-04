@@ -11,7 +11,7 @@
 O projeto Cineflex tem como finalidade simular uma reserva de poltrona no cinema. A base de dados vem da API fornecida pela equipe da Driven.
 
 
-> :construction: Projeto em construção :construction:
+> :construction: Projeto Finalizado :construction:
 
 
 ## 📁 Acesso ao projeto:
